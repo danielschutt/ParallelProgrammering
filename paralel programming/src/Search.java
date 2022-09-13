@@ -237,11 +237,25 @@ public class Search {
             
             // TODO: Add tasks to list here
             SearchTask placeHolderTask = new SearchTask(text, pattern, 0, len);
+            System.out.println("Total characters: " + len);
+            System.out.println("Rest " + (len%ntasks));
             for(int i = 0; i< ntasks; i++) {
+            	int rest = 0;
+            	if(i == ntasks-1) {
+            		rest = len % ntasks;
+            		
+            	}
+            		
+            		placeHolderTask = new SearchTask(text, pattern,(len/ntasks)*i, ((len/ntasks)*(i+1)+rest));
+            		taskList.add(placeHolderTask);
+            		System.out.println("\n range from " + (len/ntasks)*i + "  to " + ((len/ntasks)*(i+1)+rest));
             	
-            	placeHolderTask = new SearchTask(text, pattern,(len/ntasks)*i, ((len/ntasks)*(i+1)));
-            	taskList.add(placeHolderTask);
+            	
+            	
+            	
+            	
             }
+           
             
 
             List<Integer> result = null;
