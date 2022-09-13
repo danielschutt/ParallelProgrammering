@@ -243,16 +243,18 @@ public class Search {
             	int rest = 0;
             	if(i == ntasks-1) {
             		rest = len % ntasks;
-            		
             	}
             		
-            		placeHolderTask = new SearchTask(text, pattern,(len/ntasks)*i, ((len/ntasks)*(i+1)+rest));
-            		taskList.add(placeHolderTask);
-            		System.out.println("\n range from " + (len/ntasks)*i + "  to " + ((len/ntasks)*(i+1)+rest));
-            	
-            	
-            	
-            	
+                int offset = 0;
+                if (i != 0){
+                    offset = pattern.length - 1;
+                }
+
+                placeHolderTask = new SearchTask(text, pattern,(len/ntasks)*i-offset, ((len/ntasks)*(i+1)+rest));
+                taskList.add(placeHolderTask);
+
+               
+                System.out.println("\n range from " + ((len/ntasks)*i - offset) + "  to " + ((len/ntasks)*(i+1)+rest));
             	
             }
            
