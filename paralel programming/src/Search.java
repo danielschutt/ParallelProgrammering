@@ -189,13 +189,19 @@ public class Search {
             getArguments(argv);
             System.out.printf("\nFile=%s, pattern='%s'\nntasks=%d, nthreads=%d, warmups=%d, runs=%d\n", 
                               fname, new String(pattern), ntasks, nthreads, warmups, runs);
+            
+            
+            String parameterDataToFile = String.format("\n\nFile=%s, pattern='%s'ntasks=%d, nthreads=%d, warmups=%d, runs=%d", fname, new String(pattern), ntasks, nthreads, warmups, runs);
+            writeData(parameterDataToFile);
 
             /* Setup execution engine */
-            ExecutorService engine = Executors.newSingleThreadExecutor();
+            ExecutorService engine = Executors.newCachedThreadPool();
 
             /**********************************************
              * Run search using a single task
              *********************************************/
+
+            //writeData("SingleRun:\n");
             SearchTask singleSearch = new SearchTask(text, pattern, 0, len);
 
             List<Integer> singleResult = null;
@@ -221,6 +227,7 @@ public class Search {
                 
                 System.out.print("\nSingle task: ");
                 writeRun(run);  writeResult(singleResult);  writeTime(time);  
+                //writeData((run+1) + ";" + time);
             }
             
             double singleTime = totalTime / runs;
@@ -232,9 +239,8 @@ public class Search {
              * Run search using multiple tasks
              *********************************************/
 
-             
-            String parameterDataToFile = String.format("\n\nFile=%s, pattern='%s'ntasks=%d, nthreads=%d, warmups=%d, runs=%d", fname, new String(pattern), ntasks, nthreads, warmups, runs);
-            writeData(parameterDataToFile);
+
+            writeData("Concurrent Run:\n");
 
             // Create list of tasks
             List<SearchTask> taskList = new ArrayList<SearchTask>();
@@ -257,7 +263,7 @@ public class Search {
                 taskList.add(placeHolderTask);
 
                
-                System.out.println("\n range from " + ((len/ntasks)*i - offset) + "  to " + ((len/ntasks)*(i+1)+rest));
+                //System.out.println("\n range from " + ((len/ntasks)*i - offset) + "  to " + ((len/ntasks)*(i+1)+rest));
             	
             }
            
@@ -298,7 +304,7 @@ public class Search {
                 
                 System.out.printf("\nUsing %2d tasks: ", ntasks);
                 writeRun(run);  writeResult(result);  writeTime(time);
-                writeData((run+1) + ";" + time);
+                //writeData((run+1) + ";" + time);
             }
 
             double multiTime = totalTime / runs;
@@ -310,9 +316,12 @@ public class Search {
                 System.out.println("\nERROR: lists differ");
             }
             System.out.printf("\n\nAverage speedup: %1.2f\n\n", singleTime / multiTime);
+            writeData(String.format("Average speedup; %1.2f", singleTime / multiTime));
 
 
             
+
+
             /**********************************************
              * Terminate engine after use
              *********************************************/

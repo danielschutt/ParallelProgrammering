@@ -1,41 +1,714 @@
-1;0.0080512
-1;0.0054485
-1;0.005952401
-1;0.0053607
-1;0.0058375
-1;0.0053844
-1;0.0074819
-1;0.0061278
-1;0.0059505
-1;0.0066849
-1;0.0045922
-2;0.0058928
-3;0.0027927
-4;0.0027533
-5;0.0026943
-6;0.0028211
-7;0.0026727
-8;0.00273
-9;0.0027352
-10;0.0027371
-1;0.0053011
-2;0.0052034
-3;0.0027593
-4;0.0026714
-5;0.0026992
-6;0.0027613
-7;0.002699
-8;0.0028175
-9;0.002702
-10;0.0027445
-File=xtest.txt, pattern='xxxx'ntasks=1, nthreads=1, warmups=10, runs=10
-1;0.0044256
-2;0.0049541
-3;0.0027759
-4;0.0027206
-5;0.0027712
-6;0.0027699
-7;0.002672
-8;0.0058429
-9;0.0040647
-10;0.0033323
+
+File=shakespeare.txt, pattern='Something is rotten in the state of Denmark'ntasks=1, nthreads=1, warmups=0, runs=10
+SingleRun:
+
+1;0.5591216
+2;0.5788608
+3;0.2500172
+4;0.252724
+5;0.2501265
+6;0.2540063
+7;0.2501727
+8;0.2533345
+9;0.2567715
+10;0.255353
+
+
+File=shakespeare.txt, pattern='Something is rotten in the state of Denmark'ntasks=1, nthreads=1, warmups=10, runs=10
+SingleRun:
+
+1;0.2493274
+2;0.2493537
+3;0.2490945
+4;0.2492978
+5;0.249262
+6;0.2545394
+7;0.2539496
+8;0.25386
+9;0.2525347
+10;0.2544533
+
+
+File=shakespeare.txt, pattern='Something is rotten in the state of Denmark'ntasks=10, nthreads=1, warmups=10, runs=10
+SingleRun:
+
+1;0.248817
+2;0.2494733
+3;0.2495089
+4;0.2499292
+5;0.2492512
+6;0.2558708
+7;0.2533502
+8;0.2550051
+9;0.248506
+10;0.2549547
+
+
+File=shakespeare.txt, pattern='Something is rotten in the state of Denmark'ntasks=10, nthreads=1, warmups=10, runs=10
+SingleRun:
+
+1;0.2510281
+2;0.2516183
+3;0.2503141
+4;0.2496442
+5;0.2503117
+6;0.2562383
+7;0.2505619
+8;0.2553721
+9;0.2509799
+10;0.2539678
+1;0.2488087
+2;0.2493946
+3;0.2510922
+4;0.2530466
+5;0.2502941
+6;0.2541555
+7;0.2496962
+8;0.2550484
+9;0.2503736
+10;0.2560349
+
+
+File=shakespeare.txt, pattern='Something is rotten in the state of Denmark'ntasks=100, nthreads=1, warmups=10, runs=10
+SingleRun:
+
+1;0.248378
+2;0.2484898
+3;0.2492285
+4;0.2503074
+5;0.2492915
+6;0.2547663
+7;0.2506214
+8;0.2540052
+9;0.2518613
+10;0.2549802
+1;0.2484847
+2;0.2494354
+3;0.2493436
+4;0.2490562
+5;0.2493582
+6;0.2555378
+7;0.2501681
+8;0.2566956
+9;0.2498597
+10;0.255741
+
+
+File=shakespeare.txt, pattern='Something is rotten in the state of Denmark'ntasks=100, nthreads=1, warmups=10, runs=10
+SingleRun:
+
+1;0.2478665
+2;0.2485202
+3;0.2490167
+4;0.2506503
+5;0.2491771
+6;0.254619
+7;0.2496617
+8;0.2535139
+9;0.2501802
+10;0.2538517
+Concurrent Run:
+
+1;0.2558179
+2;0.2520015
+3;0.2549813
+4;0.2603558
+5;0.2699935
+6;0.2609237
+7;0.2546468
+8;0.2573097
+9;0.2645856
+10;0.253418
+
+
+File=shakespeare.txt, pattern='Something is rotten in the state of Denmark'ntasks=100, nthreads=1, warmups=10, runs=10
+SingleRun:
+
+1;0.2481804
+2;0.2481696
+3;0.2489121
+4;0.2496462
+5;0.2491856
+6;0.2539878
+7;0.2486776
+8;0.2554715
+9;0.2497916
+10;0.253527
+Concurrent Run:
+
+1;0.2485178
+2;0.2487791
+3;0.2483601
+4;0.2491207
+5;0.2490059
+6;0.2560582
+7;0.2492805
+8;0.2552406
+9;0.2489253
+10;0.2563363
+
+
+File=shakespeare.txt, pattern='Something is rotten in the state of Denmark'ntasks=10, nthreads=1, warmups=10, runs=10
+SingleRun:
+
+1;0.2526264
+2;0.2480812
+3;0.2489343
+4;0.2490405
+5;0.2523767
+6;0.2558706
+7;0.2544448
+8;0.2553792
+9;0.2500322
+10;0.2531561
+Concurrent Run:
+
+1;0.2478984
+2;0.2492419
+3;0.2515015
+4;0.2492433
+5;0.2487716
+6;0.2543206
+7;0.2547503
+8;0.2573787
+9;0.2505189
+10;0.2560273
+
+
+File=shakespeare.txt, pattern='Something is rotten in the state of Denmark'ntasks=1000, nthreads=1, warmups=10, runs=10
+SingleRun:
+
+1;0.2484995
+2;0.2501357
+3;0.2529711
+4;0.2487861
+5;0.2537326
+6;0.2563159
+7;0.251883
+8;0.2544868
+9;0.2495035
+10;0.256704
+Concurrent Run:
+
+1;0.28272
+2;0.282045
+3;0.2825239
+4;0.2771974
+5;0.281989
+6;0.2786462
+7;0.2835294
+8;0.2784182
+9;0.283259
+10;0.2864948
+
+
+File=shakespeare.txt, pattern='Something is rotten in the state of Denmark'ntasks=10000, nthreads=1, warmups=10, runs=10
+SingleRun:
+
+1;0.2495839
+2;0.2482352
+3;0.249727
+4;0.2519143
+5;0.2493722
+6;0.2536145
+7;0.2496285
+8;0.2534821
+9;0.2486768
+10;0.254057
+Concurrent Run:
+
+1;0.3262625
+2;0.3282922
+3;0.3278944
+4;0.3284202
+5;0.3305097
+6;0.328368
+7;0.3266708
+8;0.3323335
+9;0.3310583
+10;0.3288775
+
+
+File=shakespeare.txt, pattern='Something is rotten in the state of Denmark'ntasks=100, nthreads=1, warmups=10, runs=10
+SingleRun:
+
+1;0.2481711
+2;0.2506752
+3;0.2515352
+4;0.2496652
+5;0.2589982
+6;0.2545119
+7;0.2591617
+8;0.2656393
+9;0.2611598
+10;0.2704029
+Concurrent Run:
+
+1;0.0362441
+2;0.0359828
+3;0.0363123
+4;0.0355437
+5;0.037391
+6;0.035402
+7;0.0365131
+8;0.0371109
+9;0.036764
+10;0.0376213
+
+
+File=shakespeare.txt, pattern='Something is rotten in the state of Denmark'ntasks=10, nthreads=1, warmups=10, runs=10
+SingleRun:
+
+1;0.2575004
+2;0.2522594
+3;0.2605323
+4;0.2587351
+5;0.2536716
+6;0.2634901
+7;0.2504953
+8;0.2717585
+9;0.2660567
+10;0.2548359
+Concurrent Run:
+
+1;0.0410294
+2;0.0427872
+3;0.0396709
+4;0.039675
+5;0.0396179
+6;0.0398413
+7;0.039893
+8;0.0420355
+9;0.0404931
+10;0.0404095
+
+
+File=shakespeare.txt, pattern='Something is rotten in the state of Denmark'ntasks=100, nthreads=1, warmups=10, runs=10
+SingleRun:
+
+1;0.2478436
+2;0.247773
+3;0.2488406
+4;0.2501909
+5;0.2496833
+6;0.2550201
+7;0.2499296
+8;0.2533154
+9;0.2506784
+10;0.25358
+Concurrent Run:
+
+1;0.035519
+2;0.0355855
+3;0.0350135
+4;0.034658
+5;0.0347812
+6;0.043155
+7;0.0344938
+8;0.0357606
+9;0.0349448
+10;0.0361137
+
+
+File=shakespeare.txt, pattern='Something is rotten in the state of Denmark'ntasks=1000, nthreads=1, warmups=10, runs=10
+SingleRun:
+
+1;0.247824
+2;0.24857
+3;0.2516778
+4;0.2488125
+5;0.248714
+6;0.2528949
+7;0.2491752
+8;0.2582266
+9;0.2496965
+10;0.2573785
+Concurrent Run:
+
+1;0.0438197
+2;0.0446491
+3;0.0443748
+4;0.0474616
+5;0.0456306
+6;0.0434024
+7;0.0454152
+8;0.0474008
+9;0.0442213
+10;0.0472127
+
+
+File=shakespeare.txt, pattern='Something is rotten in the state of Denmark'ntasks=5, nthreads=1, warmups=10, runs=10
+SingleRun:
+
+1;0.248457
+2;0.2490864
+3;0.2497735
+4;0.250511
+5;0.2484783
+6;0.2581861
+7;0.2500669
+8;0.2555428
+9;0.2503872
+10;0.2574565
+Concurrent Run:
+
+1;0.0519919
+2;0.0528568
+3;0.0543218
+4;0.0570752
+5;0.0706814
+6;0.0669027
+7;0.0597798
+8;0.0687489
+9;0.0578221
+10;0.0599356
+
+
+File=shakespeare.txt, pattern='Something is rotten in the state of Denmark'ntasks=6, nthreads=1, warmups=10, runs=10
+SingleRun:
+
+1;0.2488195
+2;0.249432
+3;0.2511849
+4;0.2498556
+5;0.2495223
+6;0.2548024
+7;0.2502543
+8;0.2581898
+9;0.250888
+10;0.2556972
+Concurrent Run:
+
+1;0.0429792
+2;0.0482319
+3;0.0533524
+4;0.0530219
+5;0.0467044
+6;0.053396
+7;0.0600115
+8;0.0465102
+9;0.051612
+10;0.0561863
+
+
+File=shakespeare.txt, pattern='Something is rotten in the state of Denmark'ntasks=2, nthreads=1, warmups=10, runs=10
+SingleRun:
+
+1;0.2590436
+2;0.2601913
+3;0.2607066
+4;0.2610022
+5;0.2612172
+6;0.2639703
+7;0.2621623
+8;0.2614336
+9;0.2640856
+10;0.2622777
+Concurrent Run:
+
+1;0.1308641
+2;0.1340679
+3;0.1326568
+4;0.14051
+5;0.1330265
+6;0.1325919
+7;0.1328266
+8;0.1332455
+9;0.1390504
+10;0.1329293
+
+
+File=shakespeare.txt, pattern='Something is rotten in the state of Denmark'ntasks=3, nthreads=1, warmups=10, runs=10
+SingleRun:
+
+1;0.248005
+2;0.2498359
+3;0.2499134
+4;0.2509131
+5;0.2532553
+6;0.2545516
+7;0.2492136
+8;0.2544813
+9;0.2502862
+10;0.2559268
+Concurrent Run:
+
+1;0.0850749
+2;0.0929323
+3;0.0858429
+4;0.0853777
+5;0.0855788
+6;0.0852032
+7;0.0863976
+8;0.0851629
+9;0.0855441
+10;0.0855429
+
+
+File=shakespeare.txt, pattern='Something is rotten in the state of Denmark'ntasks=5, nthreads=1, warmups=10, runs=10
+SingleRun:
+
+1;0.248956
+2;0.2522422
+3;0.2491387
+4;0.2504619
+5;0.2562918
+6;0.2608393
+7;0.2505048
+8;0.2559705
+9;0.2515584
+10;0.2553496
+Concurrent Run:
+
+1;0.0522314
+2;0.0603233
+3;0.060823
+4;0.060141
+5;0.0550461
+6;0.0582175
+7;0.0539655
+8;0.0520481
+9;0.0557977
+10;0.0669721
+
+
+File=shakespeare.txt, pattern='Something is rotten in the state of Denmark'ntasks=10, nthreads=1, warmups=10, runs=10
+SingleRun:
+
+1;0.2497754
+2;0.2495586
+3;0.2492764
+4;0.2512819
+5;0.2509637
+6;0.2543478
+7;0.2507506
+8;0.2539203
+9;0.2509986
+10;0.2546828
+Concurrent Run:
+
+1;0.040925
+2;0.04606
+3;0.0402475
+4;0.0400469
+5;0.0397728
+6;0.0484577
+7;0.0398826
+8;0.0425582
+9;0.0406942
+10;0.0393191
+
+
+File=shakespeare.txt, pattern='Something is rotten in the state of Denmark'ntasks=20, nthreads=1, warmups=10, runs=10
+SingleRun:
+
+1;0.252772
+2;0.2539497
+3;0.2558353
+4;0.2528445
+5;0.2528762
+6;0.2579424
+7;0.2537233
+8;0.2585517
+9;0.255709
+10;0.256539
+Concurrent Run:
+
+1;0.0410796
+2;0.0388864
+3;0.040002
+4;0.0370395
+5;0.0388204
+6;0.0393928
+7;0.040055
+8;0.0408624
+9;0.0456369
+10;0.0397728
+
+
+File=shakespeare.txt, pattern='Something is rotten in the state of Denmark'ntasks=50, nthreads=1, warmups=10, runs=10
+SingleRun:
+
+1;0.2485074
+2;0.2502096
+3;0.2492561
+4;0.2499742
+5;0.2494439
+6;0.2552231
+7;0.2508737
+8;0.2562812
+9;0.2510265
+10;0.2553868
+Concurrent Run:
+
+1;0.0392378
+2;0.0377957
+3;0.0402121
+4;0.0366928
+5;0.0404021
+6;0.0373652
+7;0.0375185
+8;0.0423003
+9;0.0389194
+10;0.0439496
+
+
+File=shakespeare.txt, pattern='Something is rotten in the state of Denmark'ntasks=100, nthreads=1, warmups=10, runs=10
+SingleRun:
+
+1;0.2480271
+2;0.2491049
+3;0.2495046
+4;0.2495416
+5;0.2486447
+6;0.2552048
+7;0.249391
+8;0.2571332
+9;0.257169
+10;0.2556083
+Concurrent Run:
+
+1;0.0376735
+2;0.0370314
+3;0.0364768
+4;0.0371657
+5;0.0375733
+6;0.037295
+7;0.0352995
+8;0.0368445
+9;0.0366899
+10;0.038462
+
+
+File=shakespeare.txt, pattern='Something is rotten in the state of Denmark'ntasks=200, nthreads=1, warmups=10, runs=10
+SingleRun:
+
+1;0.2507641
+2;0.2528611
+3;0.2503556
+4;0.2494078
+5;0.2508928
+6;0.2559652
+7;0.2522619
+8;0.2541991
+9;0.2540074
+10;0.2545122
+Concurrent Run:
+
+1;0.036099
+2;0.0366755
+3;0.0364159
+4;0.0396488
+5;0.036045
+6;0.035464
+7;0.0354687
+8;0.0352504
+9;0.0355524
+10;0.0352836
+
+
+File=shakespeare.txt, pattern='Something is rotten in the state of Denmark'ntasks=2, nthreads=1, warmups=10, runs=10
+SingleRun:
+
+1;0.2499348
+2;0.2527972
+3;0.2583365
+4;0.2509384
+5;0.2562066
+6;0.2594785
+7;0.2520719
+8;0.2565074
+9;0.2541409
+10;0.2519686
+Concurrent Run:
+
+Average speedup: 2,00
+
+
+File=shakespeare.txt, pattern='Something is rotten in the state of Denmark'ntasks=2, nthreads=1, warmups=10, runs=10
+Concurrent Run:
+
+Average speedup: 1,98
+
+
+File=shakespeare.txt, pattern='Something is rotten in the state of Denmark'ntasks=3, nthreads=1, warmups=10, runs=10
+Concurrent Run:
+
+Average speedup: 3,01
+
+
+File=shakespeare.txt, pattern='Something is rotten in the state of Denmark'ntasks=5, nthreads=1, warmups=10, runs=10
+Concurrent Run:
+
+Average speedup: 4,58
+
+
+File=shakespeare.txt, pattern='Something is rotten in the state of Denmark'ntasks=10, nthreads=1, warmups=10, runs=10
+Concurrent Run:
+
+Average speedup: 6,31
+
+
+File=shakespeare.txt, pattern='Something is rotten in the state of Denmark'ntasks=20, nthreads=1, warmups=10, runs=10
+Concurrent Run:
+
+Average speedup: 6,25
+
+
+File=shakespeare.txt, pattern='Something is rotten in the state of Denmark'ntasks=50, nthreads=1, warmups=10, runs=10
+Concurrent Run:
+
+Average speedup: 6,62
+
+
+File=shakespeare.txt, pattern='Something is rotten in the state of Denmark'ntasks=100, nthreads=1, warmups=10, runs=10
+Concurrent Run:
+
+Average speedup: 6,81
+
+
+-------
+
+
+
+
+File=shakespeare.txt, pattern='Something is rotten in the state of Denmark'ntasks=2, nthreads=1, warmups=10, runs=10
+Concurrent Run:
+
+Average speedup; 1,95
+
+
+File=shakespeare.txt, pattern='Something is rotten in the state of Denmark'ntasks=3, nthreads=1, warmups=10, runs=10
+Concurrent Run:
+
+Average speedup; 2,88
+
+
+File=shakespeare.txt, pattern='Something is rotten in the state of Denmark'ntasks=5, nthreads=1, warmups=10, runs=10
+Concurrent Run:
+
+Average speedup; 4,50
+
+
+File=shakespeare.txt, pattern='Something is rotten in the state of Denmark'ntasks=10, nthreads=1, warmups=10, runs=10
+Concurrent Run:
+
+Average speedup; 6,27
+
+
+File=shakespeare.txt, pattern='Something is rotten in the state of Denmark'ntasks=20, nthreads=1, warmups=10, runs=10
+Concurrent Run:
+
+Average speedup; 6,42
+
+
+File=shakespeare.txt, pattern='Something is rotten in the state of Denmark'ntasks=50, nthreads=1, warmups=10, runs=10
+Concurrent Run:
+
+Average speedup; 6,76
+
+
+File=shakespeare.txt, pattern='Something is rotten in the state of Denmark'ntasks=100, nthreads=1, warmups=10, runs=10
+Concurrent Run:
+
+Average speedup; 6,92
