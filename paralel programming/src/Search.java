@@ -237,8 +237,7 @@ public class Search {
             
             // TODO: Add tasks to list here
             SearchTask placeHolderTask = new SearchTask(text, pattern, 0, len);
-            System.out.println("Total characters: " + len);
-            System.out.println("Rest " + (len%ntasks));
+
             for(int i = 0; i< ntasks; i++) {
             	int rest = 0;
             	if(i == ntasks-1) {
@@ -295,6 +294,7 @@ public class Search {
                 
                 System.out.printf("\nUsing %2d tasks: ", ntasks);
                 writeRun(run);  writeResult(result);  writeTime(time);
+                writeData((run+1) + ";" + time);
             }
 
             double multiTime = totalTime / runs;

@@ -1,0 +1,2 @@
+java Search -W 10 -R 10 -d destination.txt xtest.txt "xxxx"
+java Search -W 10 -R 10 -d destination.txt Shakespeare.txt "Something is rotten in the state of Denmark."
