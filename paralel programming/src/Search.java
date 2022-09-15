@@ -232,6 +232,10 @@ public class Search {
              * Run search using multiple tasks
              *********************************************/
 
+             
+            String parameterDataToFile = String.format("\n\nFile=%s, pattern='%s'ntasks=%d, nthreads=%d, warmups=%d, runs=%d", fname, new String(pattern), ntasks, nthreads, warmups, runs);
+            writeData(parameterDataToFile);
+
             // Create list of tasks
             List<SearchTask> taskList = new ArrayList<SearchTask>();
             
