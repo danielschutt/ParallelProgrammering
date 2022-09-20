@@ -195,7 +195,7 @@ public class Search {
             writeData(parameterDataToFile);
 
             /* Setup execution engine */
-            ExecutorService engine = Executors.newFixedThreadPool(nthreads);
+            ExecutorService engine = Executors.newCachedThreadPool();
 
             /**********************************************
              * Run search using a single task

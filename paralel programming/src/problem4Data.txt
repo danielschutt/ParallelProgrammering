@@ -1,0 +1,295 @@
+
+
+
+File=shakespeare.txt, pattern='Something is rotten in the state of Denmark'ntasks=2, nthreads=2, warmups=10, runs=10
+Concurrent Run:
+
+Average speedup; 1,96
+
+
+File=shakespeare.txt, pattern='Something is rotten in the state of Denmark'ntasks=3, nthreads=2, warmups=10, runs=10
+Concurrent Run:
+
+Average speedup; 1,47
+
+
+File=shakespeare.txt, pattern='Something is rotten in the state of Denmark'ntasks=5, nthreads=2, warmups=10, runs=10
+Concurrent Run:
+
+Average speedup; 1,63
+
+
+File=shakespeare.txt, pattern='Something is rotten in the state of Denmark'ntasks=10, nthreads=2, warmups=10, runs=10
+Concurrent Run:
+
+Average speedup; 1,92
+
+
+File=shakespeare.txt, pattern='Something is rotten in the state of Denmark'ntasks=20, nthreads=2, warmups=10, runs=10
+Concurrent Run:
+
+Average speedup; 1,98
+
+
+File=shakespeare.txt, pattern='Something is rotten in the state of Denmark'ntasks=50, nthreads=2, warmups=10, runs=10
+Concurrent Run:
+
+Average speedup; 1,92
+
+
+File=shakespeare.txt, pattern='Something is rotten in the state of Denmark'ntasks=100, nthreads=2, warmups=10, runs=10
+Concurrent Run:
+
+Average speedup; 1,90
+
+
+File=shakespeare.txt, pattern='Something is rotten in the state of Denmark'ntasks=2, nthreads=3, warmups=10, runs=10
+Concurrent Run:
+
+Average speedup; 1,94
+
+
+File=shakespeare.txt, pattern='Something is rotten in the state of Denmark'ntasks=3, nthreads=3, warmups=10, runs=10
+Concurrent Run:
+
+Average speedup; 2,74
+
+
+File=shakespeare.txt, pattern='Something is rotten in the state of Denmark'ntasks=5, nthreads=3, warmups=10, runs=10
+Concurrent Run:
+
+Average speedup; 2,40
+
+
+File=shakespeare.txt, pattern='Something is rotten in the state of Denmark'ntasks=10, nthreads=3, warmups=10, runs=10
+Concurrent Run:
+
+Average speedup; 2,39
+
+
+File=shakespeare.txt, pattern='Something is rotten in the state of Denmark'ntasks=20, nthreads=3, warmups=10, runs=10
+Concurrent Run:
+
+Average speedup; 2,62
+
+
+File=shakespeare.txt, pattern='Something is rotten in the state of Denmark'ntasks=50, nthreads=3, warmups=10, runs=10
+Concurrent Run:
+
+Average speedup; 2,75
+
+
+File=shakespeare.txt, pattern='Something is rotten in the state of Denmark'ntasks=100, nthreads=3, warmups=10, runs=10
+Concurrent Run:
+
+Average speedup; 2,75
+
+
+File=shakespeare.txt, pattern='Something is rotten in the state of Denmark'ntasks=2, nthreads=5, warmups=10, runs=10
+Concurrent Run:
+
+Average speedup; 1,97
+
+
+File=shakespeare.txt, pattern='Something is rotten in the state of Denmark'ntasks=3, nthreads=5, warmups=10, runs=10
+Concurrent Run:
+
+Average speedup; 2,72
+
+
+File=shakespeare.txt, pattern='Something is rotten in the state of Denmark'ntasks=5, nthreads=5, warmups=10, runs=10
+Concurrent Run:
+
+Average speedup; 3,86
+
+
+File=shakespeare.txt, pattern='Something is rotten in the state of Denmark'ntasks=10, nthreads=5, warmups=10, runs=10
+Concurrent Run:
+
+Average speedup; 3,90
+
+
+File=shakespeare.txt, pattern='Something is rotten in the state of Denmark'ntasks=20, nthreads=5, warmups=10, runs=10
+Concurrent Run:
+
+Average speedup; 3,95
+
+
+File=shakespeare.txt, pattern='Something is rotten in the state of Denmark'ntasks=50, nthreads=5, warmups=10, runs=10
+Concurrent Run:
+
+Average speedup; 3,84
+
+
+File=shakespeare.txt, pattern='Something is rotten in the state of Denmark'ntasks=100, nthreads=5, warmups=10, runs=10
+Concurrent Run:
+
+Average speedup; 4,01
+
+
+File=shakespeare.txt, pattern='Something is rotten in the state of Denmark'ntasks=2, nthreads=10, warmups=10, runs=10
+Concurrent Run:
+
+Average speedup; 1,93
+
+
+File=shakespeare.txt, pattern='Something is rotten in the state of Denmark'ntasks=3, nthreads=10, warmups=10, runs=10
+Concurrent Run:
+
+Average speedup; 2,76
+
+
+File=shakespeare.txt, pattern='Something is rotten in the state of Denmark'ntasks=5, nthreads=10, warmups=10, runs=10
+Concurrent Run:
+
+Average speedup; 3,81
+
+
+File=shakespeare.txt, pattern='Something is rotten in the state of Denmark'ntasks=10, nthreads=10, warmups=10, runs=10
+Concurrent Run:
+
+Average speedup; 5,66
+
+
+File=shakespeare.txt, pattern='Something is rotten in the state of Denmark'ntasks=20, nthreads=10, warmups=10, runs=10
+Concurrent Run:
+
+Average speedup; 5,54
+
+
+File=shakespeare.txt, pattern='Something is rotten in the state of Denmark'ntasks=50, nthreads=10, warmups=10, runs=10
+Concurrent Run:
+
+Average speedup; 5,51
+
+
+File=shakespeare.txt, pattern='Something is rotten in the state of Denmark'ntasks=100, nthreads=10, warmups=10, runs=10
+Concurrent Run:
+
+Average speedup; 4,98
+
+
+File=shakespeare.txt, pattern='Something is rotten in the state of Denmark'ntasks=2, nthreads=20, warmups=10, runs=10
+Concurrent Run:
+
+Average speedup; 1,94
+
+
+File=shakespeare.txt, pattern='Something is rotten in the state of Denmark'ntasks=3, nthreads=20, warmups=10, runs=10
+Concurrent Run:
+
+Average speedup; 2,65
+
+
+File=shakespeare.txt, pattern='Something is rotten in the state of Denmark'ntasks=5, nthreads=20, warmups=10, runs=10
+Concurrent Run:
+
+Average speedup; 3,84
+
+
+File=shakespeare.txt, pattern='Something is rotten in the state of Denmark'ntasks=10, nthreads=20, warmups=10, runs=10
+Concurrent Run:
+
+Average speedup; 5,61
+
+
+File=shakespeare.txt, pattern='Something is rotten in the state of Denmark'ntasks=20, nthreads=20, warmups=10, runs=10
+Concurrent Run:
+
+Average speedup; 5,64
+
+
+File=shakespeare.txt, pattern='Something is rotten in the state of Denmark'ntasks=50, nthreads=20, warmups=10, runs=10
+Concurrent Run:
+
+Average speedup; 5,82
+
+
+File=shakespeare.txt, pattern='Something is rotten in the state of Denmark'ntasks=100, nthreads=20, warmups=10, runs=10
+Concurrent Run:
+
+Average speedup; 5,88
+
+
+File=shakespeare.txt, pattern='Something is rotten in the state of Denmark'ntasks=2, nthreads=50, warmups=10, runs=10
+Concurrent Run:
+
+Average speedup; 1,95
+
+
+File=shakespeare.txt, pattern='Something is rotten in the state of Denmark'ntasks=3, nthreads=50, warmups=10, runs=10
+Concurrent Run:
+
+Average speedup; 2,46
+
+
+File=shakespeare.txt, pattern='Something is rotten in the state of Denmark'ntasks=5, nthreads=50, warmups=10, runs=10
+Concurrent Run:
+
+Average speedup; 3,59
+
+
+File=shakespeare.txt, pattern='Something is rotten in the state of Denmark'ntasks=10, nthreads=50, warmups=10, runs=10
+Concurrent Run:
+
+Average speedup; 5,59
+
+
+File=shakespeare.txt, pattern='Something is rotten in the state of Denmark'ntasks=20, nthreads=50, warmups=10, runs=10
+Concurrent Run:
+
+Average speedup; 5,61
+
+
+File=shakespeare.txt, pattern='Something is rotten in the state of Denmark'ntasks=50, nthreads=50, warmups=10, runs=10
+Concurrent Run:
+
+Average speedup; 6,08
+
+
+File=shakespeare.txt, pattern='Something is rotten in the state of Denmark'ntasks=100, nthreads=50, warmups=10, runs=10
+Concurrent Run:
+
+Average speedup; 6,19
+
+
+File=shakespeare.txt, pattern='Something is rotten in the state of Denmark'ntasks=2, nthreads=100, warmups=10, runs=10
+Concurrent Run:
+
+Average speedup; 1,93
+
+
+File=shakespeare.txt, pattern='Something is rotten in the state of Denmark'ntasks=3, nthreads=100, warmups=10, runs=10
+Concurrent Run:
+
+Average speedup; 2,75
+
+
+File=shakespeare.txt, pattern='Something is rotten in the state of Denmark'ntasks=5, nthreads=100, warmups=10, runs=10
+Concurrent Run:
+
+Average speedup; 3,90
+
+
+File=shakespeare.txt, pattern='Something is rotten in the state of Denmark'ntasks=10, nthreads=100, warmups=10, runs=10
+Concurrent Run:
+
+Average speedup; 5,62
+
+
+File=shakespeare.txt, pattern='Something is rotten in the state of Denmark'ntasks=20, nthreads=100, warmups=10, runs=10
+Concurrent Run:
+
+Average speedup; 5,59
+
+
+File=shakespeare.txt, pattern='Something is rotten in the state of Denmark'ntasks=50, nthreads=100, warmups=10, runs=10
+Concurrent Run:
+
+Average speedup; 6,01
+
+
+File=shakespeare.txt, pattern='Something is rotten in the state of Denmark'ntasks=100, nthreads=100, warmups=10, runs=10
+Concurrent Run:
+
+Average speedup; 6,11
