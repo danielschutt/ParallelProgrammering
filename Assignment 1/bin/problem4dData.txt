@@ -1,0 +1,12 @@
+
+
+File=shakespeare.txt, pattern='There is something rotten in the state of Denmark'ntasks=100, nthreads=100, warmups=10, runs=10
+Concurrent Run:
+
+Average speedup; 6,43
+
+
+File=shakespeare.txt, pattern='Something is rotten in the state of Denmark'ntasks=100, nthreads=100, warmups=10, runs=10
+Concurrent Run:
+
+Average speedup; 6,14
