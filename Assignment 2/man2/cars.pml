@@ -1,49 +1,66 @@
 
-#define N 8
+#define N 4
 
 
 int up = 0;
 int down = 0;
 
+int upSpin = 0;
+int downSpin = 0;
+
 bool upSem = 1;
 bool downSem = 1;
+
+#define P(Sem) Sem == 1 -> Sem = 0;
+#define V(Sem) Sem = 1;
+
 active [N] proctype Car()
 {
 	do ::
 		if 
 		:: (_pid < N/2) ->
-			downSem == 1 ->
-			downSem = 0;
+			P(downSem);
 			if 
 			:: down == 0 ->
-				upSem == 1 ->
-				upSem = 0;
+				P(upSem);
 			fi;
 			int temp;			
 			temp = down;
 			down = temp + 1;
-			downSem = 1;
+			
+			V(downSem)
 			
 			
 		:: else ->
-			upSem == 1 ->
-			upSem = 0;
+			P(upSem);
 			if 
 			:: up == 0 ->
-				downSem == 1 ->
-				downSem = 0;
+				P(downSem);
 			fi;
 			int temp2;			
 			temp2 = up;
 			up = temp2 + 1;
-			upSem = 1;
+			
+			V(upSem)
+		fi;
+		
+
+		if 
+		:: (_pid < N/2) ->
+			downSpin++;
+		::else -> 
+			upSpin++;
 		fi;
 
-
 		
-		assert(up <=N/2 && down == 0 || down <= N/2 && up == 0);
+		assert(upSpin <=N/2 && downSpin == 0 || downSpin <= N/2 && upSpin == 0);
 		
-
+		if 
+		:: (_pid < N/2) ->
+			downSpin--;
+		::else -> 
+			upSpin--;
+		fi;
 
 
 // ********* leave *******
@@ -52,17 +69,18 @@ active [N] proctype Car()
 			int temp3;
 			temp3 = down;
 			temp3--;
+			
 			down = temp3;
 			if :: down == 0 ->
-				upSem = 1;
+				V(upSem);
 			fi;
 		:: else -> 
-		int temp4;
+			int temp4;
 			temp4 = up;
 			temp4--;
 			up = temp4;
 			if :: up == 0 ->
-				downSem = 1;
+				V(downSem);
 			fi;
 		fi;
 	od;
