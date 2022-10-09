@@ -1,6 +1,6 @@
 
 
-#define N 8
+#define N 4
 
 int up = 0;
 int down = 0;
@@ -12,7 +12,7 @@ bool enterSem = 1;
 bool upSem = 0;
 bool downSem = 0;
 
-#define P(Sem) Sem == 1 -> Sem = 0;
+#define P(Sem) (Sem == 1) -> Sem = 0;
 #define V(Sem) Sem = 1;
 
 
@@ -35,6 +35,7 @@ enter:
 				delayedDown++;
 				V(enterSem);
 				P(downSem);
+			:: else -> skip;
 			fi;
 			down++;
 
@@ -56,6 +57,7 @@ enter:
 				delayedUp++;
 				V(enterSem);
 				P(upSem);
+			:: else -> skip;
 			fi;
 			up++;
 
@@ -83,9 +85,8 @@ leave:
 			// SIGNAL
 			if 
 			:: (down == 0 && delayedUp > 0) -> 
+				delayedUp--;
 				V(upSem);
-			:: (delayedDown > 0) -> 
-				V(downSem);
 			:: else -> 
 				V(enterSem);
 			fi;
@@ -98,9 +99,8 @@ leave:
 			// SIGNAL
 			if 
 			:: (up == 0 && delayedDown > 0) -> 
-				V(downSem);
-			:: (delayedUp > 0) -> 
-				V(upSem);
+				delayedDown--;
+				V(downSem); 
 			:: else -> 
 				V(enterSem);
 			fi;
