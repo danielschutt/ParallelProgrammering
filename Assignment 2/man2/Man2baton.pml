@@ -1,6 +1,6 @@
 
 
-#define N 4
+#define N 8
 
 int up = 0;
 int down = 0;
@@ -12,7 +12,7 @@ bool enterSem = 1;
 bool upSem = 0;
 bool downSem = 0;
 
-#define P(Sem) (Sem == 1) -> Sem = 0;
+#define P(Sem) atomic{(Sem == 1) -> Sem = 0;}
 #define V(Sem) Sem = 1;
 
 
@@ -97,6 +97,7 @@ leave:
 			up--;	
 
 			// SIGNAL
+
 			if 
 			:: (up == 0 && delayedDown > 0) -> 
 				delayedDown--;
