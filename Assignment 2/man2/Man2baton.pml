@@ -16,9 +16,6 @@ bool downSem = 0;
 #define V(Sem) Sem = 1;
 
 
-
-
-
 active [N] proctype Car()
 {
 	do 
@@ -27,14 +24,16 @@ active [N] proctype Car()
 	
 enter:
 // Down cars
+
+		P(enterSem);
 		if
 		:: (_pid < N/2) ->
-			P(enterSem);
 			if 
 			:: (up > 0) ->
 				delayedDown++;
 				V(enterSem);
 				P(downSem);
+				delayedDown--;
 			:: else -> skip;
 			fi;
 			down++;
@@ -42,7 +41,6 @@ enter:
 			// SIGNAL:
 			if
 			:: (delayedDown > 0) ->
-				delayedDown--;
 				V(downSem);
 			:: else ->
 				V(enterSem);
@@ -51,12 +49,13 @@ enter:
 		
 // Up Cars				
 		:: else -> 
-			P(enterSem);
+			//P(enterSem); REMOVE
 			if
 			:: (down > 0) ->
 				delayedUp++;
 				V(enterSem);
 				P(upSem);
+				delayedUp--;
 			:: else -> skip;
 			fi;
 			up++;
@@ -64,7 +63,6 @@ enter:
 			// SIGNAL
 			if
 			:: (delayedUp > 0) ->
-				delayedUp--;
 				V(upSem);
 			:: else ->
 				V(enterSem);
@@ -73,19 +71,19 @@ enter:
 
 ally:
 		assert((down <= N/2 && up == 0) || (up <= N/2 && down == 0));
-
+		assert((downSem + upSem + enterSem) <= 1);
 leave:
 
 // Down cars 
+
+		P(enterSem);
 		if
 		:: (_pid < N/2) ->
-			P(enterSem);
 			down--;			
 
 			// SIGNAL
 			if 
 			:: (down == 0 && delayedUp > 0) -> 
-				delayedUp--;
 				V(upSem);
 			:: else -> 
 				V(enterSem);
@@ -93,14 +91,11 @@ leave:
 				
 // Up cars
 		:: else -> 
-			P(enterSem);
 			up--;	
 
 			// SIGNAL
-
 			if 
 			:: (up == 0 && delayedDown > 0) -> 
-				delayedDown--;
 				V(downSem); 
 			:: else -> 
 				V(enterSem);

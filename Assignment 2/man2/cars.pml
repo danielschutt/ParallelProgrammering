@@ -11,7 +11,7 @@ int downSpin = 0;
 bool upSem = 1;
 bool downSem = 1;
 
-#define P(Sem) Sem == 1 -> Sem = 0;
+#define P(Sem) atomic{Sem == 1 -> Sem = 0};
 #define V(Sem) Sem = 1;
 
 active [N] proctype Car()
