@@ -21,22 +21,18 @@ class NaiveBarrier extends Barrier {
         
         arrived++;
             
-        
-                
-            if (arrived < 9) { 
-                if(arrived != threshold){
-                    wait();
-                }else{
-                    Thread.sleep(500);
-                    notify();
-                    wait();
-                }
-            } else {
-                arrived = 0;
-                notifyAll();
+        if (arrived < 9) { 
+            if(arrived != threshold){
+                wait();
+            }else{
+                Thread.sleep(500);
+                notify();
+                wait();
             }
-
-        
+        } else {
+            arrived = 0;
+            notifyAll();
+        }        
     }
 
     @Override
@@ -49,8 +45,7 @@ class NaiveBarrier extends Barrier {
         active = false;
         arrived = 0;
         
-        notifyAll();
-        
+        notifyAll();        
     }
 
 
