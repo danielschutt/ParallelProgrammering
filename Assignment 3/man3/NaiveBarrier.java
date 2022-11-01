@@ -8,49 +8,57 @@ class NaiveBarrier extends Barrier {
     
     int arrived = 0;
     boolean active = false;
+    int threshold = 10;
    
     public NaiveBarrier(CarDisplayI cd) {
         super(cd);
     }
 
     @Override
-    public void sync(int no) throws InterruptedException {
+    public synchronized void sync(int no) throws InterruptedException {
 
         if (!active) return;
         
         arrived++;
             
-        synchronized(this) {
+        
                 
             if (arrived < 9) { 
-                wait();
+                if(arrived != threshold){
+                    wait();
+                }else{
+                    Thread.sleep(500);
+                    notify();
+                    wait();
+                }
             } else {
                 arrived = 0;
                 notifyAll();
             }
 
-        }
+        
     }
 
     @Override
-    public void on() {
+    public synchronized void on() {
         active = true;
     }
 
     @Override
-    public void off() {
+    public synchronized void off() {
         active = false;
         arrived = 0;
-        synchronized(this) {
-            notifyAll();
-        }
+        
+        notifyAll();
+        
     }
 
-/*
+
     @Override
     // May be (ab)used for robustness testing
-    public void set(int k) { 
+    public synchronized void set(int k) {
+        threshold = k; 
     }    
-*/    
+
 
 }
