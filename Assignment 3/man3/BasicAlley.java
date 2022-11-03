@@ -6,8 +6,8 @@
 
 public class BasicAlley extends Alley {
 
-    int up = 0, down = 0;
-    
+    int up = 0, down = 0;    
+
     /* Block until car no. may enter alley */
     public synchronized void enter(int no) throws InterruptedException {
         if (no < 5) {

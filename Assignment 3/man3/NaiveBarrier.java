@@ -48,12 +48,9 @@ class NaiveBarrier extends Barrier {
         notifyAll();        
     }
 
-
     @Override
     // May be (ab)used for robustness testing
     public synchronized void set(int k) {
         threshold = k; 
     }    
-
-
 }

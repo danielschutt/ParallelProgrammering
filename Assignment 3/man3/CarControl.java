@@ -26,6 +26,7 @@ class Conductor extends Thread {
 
     Pos curpos;                      // Current position 
     Pos newpos;                      // New position to go to
+    boolean inAlley;                 // Added by us. Indicates if a car is in the alley or not
 
     public Conductor(int no, CarDisplayI cd, Gate g, Field field, Alley alley, Barrier barrier) {
 
@@ -37,6 +38,7 @@ class Conductor extends Thread {
         mygate = g;
         startpos = cd.getStartPos(no);
         barpos   = cd.getBarrierPos(no);  // For later use
+        inAlley = false;
 
         col = chooseColor();
 
@@ -89,10 +91,10 @@ class Conductor extends Thread {
     boolean atBarrier(Pos pos) {
         return pos.equals(barpos);
     }
-
+    CarI car;
     public void run() {
         try {
-            CarI car = cd.newCar(no, col, startpos);
+            car = cd.newCar(no, col, startpos);
             curpos = startpos;
             field.enter(no, curpos);
             cd.register(car);
@@ -108,14 +110,19 @@ class Conductor extends Thread {
 
                 if (atBarrier(curpos)) barrier.sync(no);
                 
-                if (atEntry(curpos)) alley.enter(no);
+                if (atEntry(curpos)) {
+                    alley.enter(no);
+                    inAlley = true;
+                } 
                 field.enter(no, newpos);
 
                 car.driveTo(newpos);
 
                 field.leave(curpos);
-                if (atExit(newpos)) alley.leave(no);
-
+                if (atExit(newpos)) {
+                    alley.leave(no);
+                    inAlley = false;
+                }
                 curpos = newpos;
             }
 
@@ -173,12 +180,30 @@ public class CarControl implements CarControlI{
         barrier.set(k);
    }
     
-    public void removeCar(int no) { 
-        cd.println("Remove Car not implemented in this version");
+    public void removeCar(int no) 
+    {
+        if (conductor[no] != null){
+
+            //field.leave(conductor[no].nextPos(conductor[no].curpos));
+            field.leave(conductor[no].curpos);
+            field.leave(conductor[no].newpos);
+            if (conductor[no].inAlley){
+                alley.leave(no);
+            }
+            //conductor[no].field.leave(conductor[no].newpos);
+            cd.deregister(conductor[no].car);
+            conductor[no] = null;
+        }
+        
     }
 
     public void restoreCar(int no) { 
-        cd.println("Restore Car not implemented in this version");
+
+        if (conductor[no] == null){
+            conductor[no] = new Conductor(no,cd,gate[no],field,alley,barrier);
+            conductor[no].setName("Conductor-" + no);
+            conductor[no].start();
+        }
     }
 
     /* Speed settings for testing purposes */
