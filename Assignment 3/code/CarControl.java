@@ -27,6 +27,8 @@ class Conductor extends Thread {
     Pos curpos;                      // Current position 
     Pos newpos;                      // New position to go to
     boolean inAlley;                 // Added by us. Indicates if a car is in the alley or not
+    boolean lockedCurrent;
+    boolean lockedNext;
 
     public Conductor(int no, CarDisplayI cd, Gate g, Field field, Alley alley, Barrier barrier) {
 
@@ -38,7 +40,10 @@ class Conductor extends Thread {
         mygate = g;
         startpos = cd.getStartPos(no);
         barpos   = cd.getBarrierPos(no);  // For later use
+        
         inAlley = false;
+        lockedCurrent = false;
+        lockedNext = false;
 
         col = chooseColor();
 
@@ -91,12 +96,76 @@ class Conductor extends Thread {
     boolean atBarrier(Pos pos) {
         return pos.equals(barpos);
     }
+
     CarI car;
+
+    public synchronized boolean isAlleyLocked(){
+        return inAlley;
+    }
+
+    public synchronized boolean isCurrentFieldLocked(){
+        return lockedCurrent;
+    }
+
+    public synchronized boolean isNextFieldLocked(){
+        return lockedNext;
+    }
+
+    
+
+    public synchronized void enterAlley(){
+        try{
+            alley.enter(no);
+            inAlley = true;
+        }
+        catch (InterruptedException ex){
+            
+        }
+    }
+
+    public synchronized void enterFirstField(){
+        try{
+            field.enter(no, curpos);
+            lockedCurrent = true;
+        }
+        catch (InterruptedException ex){
+
+        }
+    }
+
+    public synchronized void enterNextField(){
+        try{
+            field.enter(no, newpos);
+            lockedNext = true;
+        }
+        catch (InterruptedException ex){
+
+        }
+    }
+
+    public synchronized void exitFieldProcedure(){
+        field.leave(curpos);
+        lockedCurrent = false;                
+
+        if (atExit(newpos)) {
+            alley.leave(no);
+            inAlley = false;
+        }
+
+        curpos = newpos;
+        lockedCurrent = true;
+        lockedNext = false;
+    }
+
+
+
     public void run() {
         try {
             car = cd.newCar(no, col, startpos);
+
             curpos = startpos;
-            field.enter(no, curpos);
+            enterFirstField();
+
             cd.register(car);
 
             while (true) { 
@@ -105,28 +174,26 @@ class Conductor extends Thread {
                     mygate.pass(); 
                     car.setSpeed(chooseSpeed());
                 }
+                
+                if (atBarrier(curpos)) barrier.sync(no);               
+
+                if (atEntry(curpos)) {
+                    enterAlley();
+                } 
 
                 newpos = nextPos(curpos);
-
-                if (atBarrier(curpos)) barrier.sync(no);
-                
-                if (atEntry(curpos)) {
-                    alley.enter(no);
-                    inAlley = true;
-                } 
-                field.enter(no, newpos);
+                enterNextField();
 
                 car.driveTo(newpos);
 
-                field.leave(curpos);
-                if (atExit(newpos)) {
-                    alley.leave(no);
-                    inAlley = false;
-                }
-                curpos = newpos;
+                // Release locks and update state for new position atomically
+                exitFieldProcedure();
             }
+        } 
+        catch (InterruptedException ex){
 
-        } catch (Exception e) {
+        }
+        catch (Exception e) {
             cd.println("Exception in Conductor no. " + no);
             System.err.println("Exception in Conductor no. " + no + ":" + e);
             e.printStackTrace();
@@ -180,18 +247,33 @@ public class CarControl implements CarControlI{
         barrier.set(k);
    }
     
-    public void removeCar(int no) 
+    public void removeCar(int no)
     {
         if (conductor[no] != null){
 
-            field.leave(conductor[no].curpos);
-            field.leave(conductor[no].newpos);
-            if (conductor[no].inAlley){
+            // If the conductor is currently in a waiting state (for either the next field or to enter the alley)
+            // interupt it. If it is not waiting, it will finish its execution, and update the state properly, since 
+            // all state changes are handled in syncronized methods.
+            conductor[no].interrupt();           
+
+            // If the conductor has locked the current field, release it
+            if (conductor[no].isCurrentFieldLocked()){
+                field.leave(conductor[no].curpos);
+            }
+            
+            // If the conductior has locked the next field, release it
+            if (conductor[no].isNextFieldLocked()){
+                field.leave(conductor[no].newpos);
+            }
+
+            // If the car is in the alley, remove it from the count.
+            if (conductor[no].isAlleyLocked()){
                 alley.leave(no);
             }
 
             cd.deregister(conductor[no].car);
             conductor[no] = null;
+
         }
         
     }
