@@ -1,0 +1,39 @@
+/*
+   DTU 02158 Concurrent Programming
+   Mandatory Assignment 4
+   Fall 2022
+*/
+
+package main
+
+import "fmt"
+
+const N = 5
+const numSieves = 5
+
+func odds(out chan<- int) {
+	// Fill in
+	var p = 2
+	for i := 3; i <= N; i += 2 {
+		out <- i
+	}
+}
+
+func sieve(in <-chan int, out chan<- int) {
+	// Fill in
+}
+
+func main() {
+	var chans [N]chan int
+	for i := range chans {
+		chans[i] = make(chan int)
+	}
+
+	fmt.Println("The first", N, "prime numbers are:")
+
+	// Connect/start goroutines
+
+	// Await termination
+
+	fmt.Println("Done!")
+}
