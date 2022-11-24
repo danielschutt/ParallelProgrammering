@@ -100,7 +100,6 @@ class Conductor extends Thread {
     CarI car;
 
 
-
     public void run() {
         try {
             car = cd.newCar(no, col, startpos);
@@ -149,6 +148,9 @@ class Conductor extends Thread {
         } 
         catch (InterruptedException ex){
             // Cleanup
+            // Everyting moved from removeCar in the car control class
+            // to the exeption handler in the Cunductors run method.
+
             cd.deregister(car);
             // If the conductor has locked the current field, release it
             if (lockedCurrent) {
