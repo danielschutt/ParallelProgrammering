@@ -9,14 +9,9 @@ package main
 import "fmt"
 
 const N = 5
-const numSieves = 5
 
 func odds(out chan<- int) {
 	// Fill in
-	var p = 2
-	for i := 3; i <= N; i += 2 {
-		out <- i
-	}
 }
 
 func sieve(in <-chan int, out chan<- int) {
@@ -24,10 +19,9 @@ func sieve(in <-chan int, out chan<- int) {
 }
 
 func main() {
-	var chans [N]chan int
-	for i := range chans {
-		chans[i] = make(chan int)
-	}
+	// Declare channels
+
+	// Initialize channels
 
 	fmt.Println("The first", N, "prime numbers are:")
 
