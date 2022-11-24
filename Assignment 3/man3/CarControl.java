@@ -112,94 +112,12 @@ class Conductor extends Thread {
     }
 
 
-    public synchronized void removeCar(){
-        
-        //cd.deregister(car);
-        // If the conductor has locked the current field, release it
-        if (isCurrentFieldLocked()) {
-            field.leave(curpos);
-        }
-
-        // If the conductior has locked the next field, release it
-        if (isNextFieldLocked()) {
-            field.leave(newpos);
-        }
-
-        // If the car is in the alley, remove it from the count.
-        if (isAlleyLocked()) {
-            alley.leave(no);
-        }        
-        
-    }
-    
-
-    public synchronized void enterAlley() throws InterruptedException {
-        
-        alley.enter(no);
-        inAlley = true;
-        
-        // try{
-        //     alley.enter(no);
-        //     inAlley = true;
-        // }
-        // catch (InterruptedException ex){
-        //     throw new InterruptedException();   
-        // }
-    }
-
-    public synchronized void enterFirstField() throws InterruptedException {
-       
-        field.enter(no, startpos);
-        curpos = startpos;
-        lockedCurrent = true;
-       
-       
-        // try{
-        //     curpos = startpos;
-        //     field.enter(no, curpos);
-        //     lockedCurrent = true;
-        // }
-        // catch (InterruptedException ex){            
-        //     throw new InterruptedException();
-        // }
-    }
-
-    public synchronized void enterNextField() throws InterruptedException{
-
-        field.enter(no, nextPos(curpos));
-        newpos = nextPos(curpos);
-        lockedNext = true;
-
-
-        // try{
-        //     newpos = nextPos(curpos);
-        //     field.enter(no, newpos);
-        //     lockedNext = true;
-        // }
-        // catch (InterruptedException ex){
-        //     throw new InterruptedException();
-        // }
-    }
-
-    public synchronized void exitFieldProcedure(){
-        field.leave(curpos);
-        lockedCurrent = false;                
-
-        if (atExit(newpos)) {
-            alley.leave(no);
-            inAlley = false;
-        }
-
-        curpos = newpos;
-        lockedCurrent = true;
-        lockedNext = false;
-    }
-
-
     public void run() {
         try {
             car = cd.newCar(no, col, startpos);
-            enterFirstField();
+            field.enter(no, startpos);
+            curpos = startpos;
+            lockedCurrent = true;
             cd.register(car);
 
             while (true) { 
@@ -216,20 +134,47 @@ class Conductor extends Thread {
                 if (atBarrier(curpos)) barrier.sync(no);               
 
                 if (atEntry(curpos)) {
-                    enterAlley();
+                    alley.enter(no);
+                    inAlley = true;
                 } 
 
-                enterNextField();
+                field.enter(no, nextPos(curpos));
+                newpos = nextPos(curpos);
+                lockedNext = true;
 
                 car.driveTo(newpos);
 
-                // Release locks and update state for new position atomically
-                exitFieldProcedure();
+                // Release locks and update state for new position
+                field.leave(curpos);
+                lockedCurrent = false;
+
+                if (atExit(newpos)) {
+                    alley.leave(no);
+                    inAlley = false;
+                }
+
+                curpos = newpos;
+                lockedCurrent = true;
+                lockedNext = false;
             }
         } 
         catch (InterruptedException ex){
             // Cleanup
-            removeCar();            
+            cd.deregister(car);
+            // If the conductor has locked the current field, release it
+            if (lockedCurrent) {
+                field.leave(curpos);
+            }
+
+            // If the conductior has locked the next field, release it
+            if (lockedNext) {
+                field.leave(newpos);
+            }
+
+            // If the car is in the alley, remove it from the count.
+            if (inAlley) {
+                alley.leave(no);
+            }            
             return;
         }
         catch (Exception e) {
@@ -293,9 +238,14 @@ public class CarControl implements CarControlI{
             // If the conductor is currently in a waiting state (for either the next field or to enter the alley)
             // interupt it. If it is not waiting, it will finish its execution, and update the state properly, since 
             // all state changes are handled in syncronized methods.            
-            conductor[no].interrupt();  
-            conductor[no].cd.deregister(conductor[no].car);
-            conductor[no] = null;
+            try{
+                conductor[no].interrupt();
+                conductor[no].join();
+                conductor[no] = null;
+            }
+            catch (InterruptedException ex){
+                System.err.println("Interrupted while waiting for conductor to finish");
+            }
             
         }        
     }
