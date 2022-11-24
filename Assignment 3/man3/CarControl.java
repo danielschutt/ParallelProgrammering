@@ -114,7 +114,7 @@ class Conductor extends Thread {
 
     public synchronized void removeCar(){
         
-        cd.deregister(car);
+        //cd.deregister(car);
         // If the conductor has locked the current field, release it
         if (isCurrentFieldLocked()) {
             field.leave(curpos);
@@ -134,35 +134,51 @@ class Conductor extends Thread {
     
 
     public synchronized void enterAlley() throws InterruptedException {
-        try{
-            alley.enter(no);
-            inAlley = true;
-        }
-        catch (InterruptedException ex){
-            throw new InterruptedException();   
-        }
+        
+        alley.enter(no);
+        inAlley = true;
+        
+        // try{
+        //     alley.enter(no);
+        //     inAlley = true;
+        // }
+        // catch (InterruptedException ex){
+        //     throw new InterruptedException();   
+        // }
     }
 
     public synchronized void enterFirstField() throws InterruptedException {
-        try{
-            curpos = startpos;
-            field.enter(no, curpos);
-            lockedCurrent = true;
-        }
-        catch (InterruptedException ex){            
-            throw new InterruptedException();
-        }
+       
+        field.enter(no, startpos);
+        curpos = startpos;
+        lockedCurrent = true;
+       
+       
+        // try{
+        //     curpos = startpos;
+        //     field.enter(no, curpos);
+        //     lockedCurrent = true;
+        // }
+        // catch (InterruptedException ex){            
+        //     throw new InterruptedException();
+        // }
     }
 
     public synchronized void enterNextField() throws InterruptedException{
-        try{
-            newpos = nextPos(curpos);
-            field.enter(no, newpos);
-            lockedNext = true;
-        }
-        catch (InterruptedException ex){
-            throw new InterruptedException();
-        }
+
+        field.enter(no, nextPos(curpos));
+        newpos = nextPos(curpos);
+        lockedNext = true;
+
+
+        // try{
+        //     newpos = nextPos(curpos);
+        //     field.enter(no, newpos);
+        //     lockedNext = true;
+        // }
+        // catch (InterruptedException ex){
+        //     throw new InterruptedException();
+        // }
     }
 
     public synchronized void exitFieldProcedure(){
@@ -278,6 +294,7 @@ public class CarControl implements CarControlI{
             // interupt it. If it is not waiting, it will finish its execution, and update the state properly, since 
             // all state changes are handled in syncronized methods.            
             conductor[no].interrupt();  
+            conductor[no].cd.deregister(conductor[no].car);
             conductor[no] = null;
             
         }        
