@@ -99,17 +99,6 @@ class Conductor extends Thread {
 
     CarI car;
 
-    public boolean isAlleyLocked(){
-        return inAlley;
-    }
-
-    public boolean isCurrentFieldLocked(){
-        return lockedCurrent;
-    }
-
-    public boolean isNextFieldLocked(){
-        return lockedNext;
-    }
 
 
     public void run() {
@@ -245,8 +234,7 @@ public class CarControl implements CarControlI{
             }
             catch (InterruptedException ex){
                 System.err.println("Interrupted while waiting for conductor to finish");
-            }
-            
+            }            
         }        
     }
 
